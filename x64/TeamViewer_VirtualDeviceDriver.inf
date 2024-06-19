@@ -1,0 +1,77 @@
+;
+; TeamViewer_VirtualDeviceDriver.inf
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=TeamViewer_VirtualDeviceDriver.cat
+DriverVer = 10/12/2023,9.33.58.52
+PnpLockDown=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%DeviceName%=Device_Install, root\TVVirtualSmartCardReader
+
+[SourceDisksFiles]
+TeamViewer_VirtualDeviceDriver.dll=1
+
+[SourceDisksNames]
+1 = %DiskName%
+
+; =================== UMDF Device ==================================
+
+[Device_Install.NT]
+CopyFiles=UMDriverCopy
+Addreg=LogParams_AddReg
+
+[Device_Install.NT.hw]
+
+[Device_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+
+[Device_Install.NT.CoInstallers]
+AddReg=CoInstallers_AddReg 
+
+[Device_Install.NT.Wdf]
+UmdfService=TeamViewer_VirtualDeviceDriver,TeamViewer_VirtualDeviceDriver_Install
+UmdfServiceOrder=TeamViewer_VirtualDeviceDriver
+UmdfMethodNeitherAction=Copy
+
+[TeamViewer_VirtualDeviceDriver_Install]
+UmdfLibraryVersion=2.0.0 
+ServiceBinary=%12%\UMDF\TeamViewer_VirtualDeviceDriver.dll
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WUDFRd.sys
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
+[LogParams_AddReg]
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\WUDF\Services\TeamViewer_VirtualDeviceDriver\Parameters", LogLevel, 0x00010001, 0x00000000
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\WUDF\Services\TeamViewer_VirtualDeviceDriver\Parameters", LogMaxFileCount, 0x00010001, 0x00000003
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\WUDF\Services\TeamViewer_VirtualDeviceDriver\Parameters", LogMaxFileSize, 0x00010001, 0x03d09000
+HKLM,"Software\Microsoft\Windows NT\CurrentVersion\WUDF\Services\TeamViewer_VirtualDeviceDriver\Parameters", LocalhostOnly, 0x00010001, 0x00000001
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\umdf
+
+[UMDriverCopy]
+TeamViewer_VirtualDeviceDriver.dll
+
+; =================== Generic ==================================
+
+[Strings]
+ManufacturerName="TeamViewer"
+DiskName = "TeamViewer_VirtualSecurityKeyDriver Installation Disk"
+WudfRdDisplayName = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceName = "TeamViewer Virtual Security Key"

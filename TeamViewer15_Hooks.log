@@ -1,0 +1,12 @@
+2024/06/04 10:17:48.808  9268  4972 L64  Loader started with: "C:\Program Files\TeamViewer\tv_x64.exe" --action uninstallpnpdriver --inf "C:\Program Files\TeamViewer\x64\TVVirtualMonitorDriver.inf" --log "C:\Program Files\TeamViewer\TeamViewer15_Hooks.log"
+2024/06/04 10:17:48.999  9268  4972 L64  CDriverInstaller::UninstallDriverFromPnPStorage: DiUninstallDriverW() failed 1168
+2024/06/04 10:17:48.999  9268  4972 L64  Uninstall driver from PnP storage Failed
+2024/06/04 10:17:49.026 10384  2032 L64  Loader started with: "C:\Program Files\TeamViewer\tv_x64.exe" --action installpnpdriver --inf "C:\Program Files\TeamViewer\x64\TVVirtualMonitorDriver.inf" --log "C:\Program Files\TeamViewer\TeamViewer15_Hooks.log"
+2024/06/04 10:17:49.905 10384  2032 L64  CDriverInstaller: Install driver to PnP storage succeed, no restart requested
+2024/06/04 10:17:49.906 10384  2032 L64  Install driver in PnP storage Succeed
+2024/06/11 18:04:36.434 10580 12232 L64  Loader started with: "C:\Program Files\TeamViewer\tv_x64.exe" --action uninstallpnpdriver --inf "C:\Program Files\TeamViewer\x64\TVVirtualMonitorDriver.inf" --log "C:\Program Files\TeamViewer\TeamViewer15_Hooks.log"
+2024/06/11 18:04:37.096 10580 12232 L64  CDriverInstaller: Uninstall driver from PnP storage succeed, no restart requested
+2024/06/11 18:04:37.096 10580 12232 L64  Uninstall driver from PnP storage Succeed
+2024/06/11 18:04:37.215 10460  6672 L64  Loader started with: "C:\Program Files\TeamViewer\tv_x64.exe" --action installpnpdriver --inf "C:\Program Files\TeamViewer\x64\TVVirtualMonitorDriver.inf" --log "C:\Program Files\TeamViewer\TeamViewer15_Hooks.log"
+2024/06/11 18:04:37.567 10460  6672 L64  CDriverInstaller: Install driver to PnP storage succeed, no restart requested
+2024/06/11 18:04:37.567 10460  6672 L64  Install driver in PnP storage Succeed
